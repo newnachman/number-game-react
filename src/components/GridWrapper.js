@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import { isSurroundedBy, replaceTarget } from '../dataManager/gridLocationHelpers';
+import { isSurroundedByEmpty, replaceTarget } from '../dataManager/gridLocationHelpers';
 import GridItem from './GridItem';
 
 const GridWrapper = ( { grid, setGrid, emptyLocation, setEmptyLocation } ) => {
 
   const moveToEmpty = ( clickedCell ) => {
     // Check if current clicked cell is close to the empty (target) cell.
-    if ( isSurroundedBy( clickedCell, emptyLocation ) ) {
+    if ( isSurroundedByEmpty( clickedCell, emptyLocation ) ) {
       let newGrid = replaceTarget( JSON.parse(JSON.stringify(grid)), clickedCell, emptyLocation );
       setGrid( newGrid );
       setEmptyLocation( clickedCell );
