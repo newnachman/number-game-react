@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/number-game-react/static/css/main.9092865f.css",
+    "main.js": "/number-game-react/static/js/main.92cb8469.js",
+    "index.html": "/number-game-react/index.html",
+    "main.9092865f.css.map": "/number-game-react/static/css/main.9092865f.css.map",
+    "main.92cb8469.js.map": "/number-game-react/static/js/main.92cb8469.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9092865f.css",
+    "static/js/main.92cb8469.js"
+  ]
+}
