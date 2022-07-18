@@ -22,7 +22,7 @@ const GridWrapper = ( { grid, setGrid, emptyLocation, setEmptyLocation } ) => {
           return row.map( ( column, j ) => {
             return (
               <GridItem 
-                key={ i + j } 
+                key={ i + '' + j } 
                 cellValue={ column } 
                 currentLocation={{ i, j }}  
                 moveToEmpty={ moveToEmpty } 
