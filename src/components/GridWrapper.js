@@ -1,16 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
-import { isSurroundedByEmpty, replaceTarget } from '../dataManager/gridLocationHelpers';
+import * as helpers from '../gridManager/gridHelpers';
 import GridItem from './GridItem';
 
-const GridWrapper = ( { grid, setGrid, emptyLocation, setEmptyLocation } ) => {
+const GridWrapper = ( { grid, setGrid } ) => {
 
   const moveToEmpty = ( clickedCell ) => {
     // Check if current clicked cell is close to the empty (target) cell.
-    if ( isSurroundedByEmpty( clickedCell, emptyLocation ) ) {
-      let newGrid = replaceTarget( JSON.parse(JSON.stringify(grid)), clickedCell, emptyLocation );
+    let emptyLocation = helpers.findEmptyInSurroundings( grid, clickedCell.i, clickedCell.j );
+    
+    if ( emptyLocation )  {
+      let newGrid = helpers.replaceTarget( helpers.structuredClone(grid), clickedCell, emptyLocation );
       setGrid( newGrid );
-      setEmptyLocation( clickedCell );
     }
   }
 

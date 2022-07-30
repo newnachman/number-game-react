@@ -1,22 +1,37 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
-import { initialGrid } from "../dataManager/initialGrid";
 import GameControls from './GameControls';
 import GameStatus from './GameStatus';
 import GridWrapper from './GridWrapper';
-import { checkFinished } from '../dataManager/checkFinished';
+import { checkFinished } from '../gridManager/checkFinished';
+import * as helpers from '../gridManager/gridHelpers';
+import { shuffleNewGrid } from '../gridManager/shuffleNewGrid';
 
 
 const GameContainer = () => {
   
   const [grid, setGrid] = useState();
-  const [emptyLocation, setEmptyLocation] = useState();
   const [gameStatus, setGameStatus] = useState();
   const [resetData, setResetData] = useState();
+  const shufflingTimesRef = useRef( 40 )
 
-  useEffect(() => {
+  const generateGrid = useCallback(
+    () => {
+      
+      const newGrid = shuffleNewGrid(shufflingTimesRef.current);
+      console.log({shufflingTimesRef})
+      console.log({newGrid})
+      setGrid(newGrid);
+      setResetData(helpers.structuredClone(newGrid));
+      setGameStatus(null);
+    },
+    [shufflingTimesRef],
+  )
+  
+
+  useEffect(() => { 
     generateGrid();
-  }, [])
+  }, [generateGrid])
 
   useEffect(() => {
     if ( grid && Array.isArray( grid ) ) {
@@ -24,18 +39,10 @@ const GameContainer = () => {
     }
   }, [grid])
 
-  function generateGrid() {
-    const { initGrid, initEmptyLocation } = initialGrid();
-
-    setGrid(initGrid);
-    setEmptyLocation(initEmptyLocation);
-    setResetData({ grid:  JSON.parse(JSON.stringify(initGrid)), emptyLocation: {...initEmptyLocation} });
-    setGameStatus(null);
-  }
+  
 
   function resetGrid() {
-    setGrid(resetData.grid);
-    setEmptyLocation(resetData.emptyLocation);
+    setGrid(helpers.structuredClone(resetData));
     setGameStatus(null);
   }
 
@@ -44,12 +51,11 @@ const GameContainer = () => {
       <GridWrapper 
         grid={grid} 
         setGrid={setGrid} 
-        emptyLocation={emptyLocation} 
-        setEmptyLocation={setEmptyLocation} 
       />
       <GameControls 
         generateGrid={generateGrid} 
         resetGrid={resetGrid} 
+        shufflingTimesRef={shufflingTimesRef}
       />
       <GameStatus gameStatus={gameStatus} />
     </GameContainerStyled>

@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Config } from '../dataManager/gridConfig';
+import * as config from '../gridManager/gridConfig';
 
 const GridItem = ( { cellValue, currentLocation, moveToEmpty } ) => {
   
   return (
     <GridItemStyled onClick={ () => moveToEmpty( currentLocation )}>
-      { cellValue === Config.Empty ? "" : cellValue }
+      { cellValue === config.EMPTY ? "" : cellValue }
     </GridItemStyled>
   )
 }

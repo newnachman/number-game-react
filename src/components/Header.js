@@ -21,7 +21,7 @@ const HeaderStyled = styled.header`
   color: #101010;
   width: 100%;
   height: 10vh;
-  background-color: #790979;
+  background-color: #bf12bf;
   box-shadow: 0 1px 2px rgba(0,0,0,0.07), 
                 0 2px 4px rgba(0,0,0,0.07), 
                 0 4px 8px rgba(0,0,0,0.07), 

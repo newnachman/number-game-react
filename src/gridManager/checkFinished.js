@@ -1,4 +1,4 @@
-import { Options } from "./gridConfig";
+import * as config from "./gridConfig";
 
 export function checkFinished( grid ) {
 
@@ -8,7 +8,7 @@ export function checkFinished( grid ) {
   // Iterate through every cell in current grid and verify right order.
   grid.forEach( row => {
     row.forEach( column => {
-      if ( column !== Options[optionIndex] ) {
+      if ( column !== config.CELL_CONTENT_OPTIONS[optionIndex] ) {
         response = false;
       }
       optionIndex++;
