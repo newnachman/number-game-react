@@ -28,7 +28,7 @@ const GridItemStyled = styled.div`
   color: lightgrey;
   background-color: #202124;
   transition: all 0.3s;
-  cursor: pointer;
+  cursor: ${ props => props.isEmpty ? "initial" : "pointer" };
   user-select: none;
 
   &:hover {

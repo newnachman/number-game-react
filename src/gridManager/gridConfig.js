@@ -29,6 +29,12 @@ export const HINTS = {
   rewindSteps: []
 }
 
+export const STATUS = {
+  WIN: 'YOU DID IT',
+  SHUFFLE: 'SHUFFLING',
+  RESET: 'RESETTING',
+}
+
 
 
 

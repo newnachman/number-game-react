@@ -1,37 +1,29 @@
 import React from 'react';
-import styled from 'styled-components';
-import * as helpers from '../gridManager/gridHelpers';
+import styled, { keyframes } from 'styled-components';
 import GridItem from './GridItem';
 
-const GridWrapper = ( { grid, setGrid } ) => {
-
-  const moveToEmpty = ( clickedCell ) => {
-    // Check if current clicked cell is close to the empty (target) cell.
-    let emptyLocation = helpers.findEmptyInSurroundings( grid, clickedCell.i, clickedCell.j );
-    
-    if ( emptyLocation )  {
-      let newGrid = helpers.replaceTarget( helpers.structuredClone(grid), clickedCell, emptyLocation );
-      setGrid( newGrid );
-    }
-  }
+const GridWrapper = ( { grid, moveToEmpty, timeActive } ) => {
 
   return (
-    <GridWrapperStyled>
-      {
-        grid && Array.isArray( grid ) && 
-        grid.map( ( row, i ) => {
-          return row.map( ( column, j ) => {
-            return (
-              <GridItem 
-                key={ i + '' + j } 
-                cellValue={ column } 
-                currentLocation={{ i, j }}  
-                moveToEmpty={ moveToEmpty } 
-              />
-          )})
-        })
-      }
-    </GridWrapperStyled>
+    <GridSectionStyled>
+      <OverlayStyled timeActive={timeActive}></OverlayStyled>
+      <GridWrapperStyled>
+        {
+          grid && Array.isArray( grid ) && 
+          grid.map( ( row, i ) => {
+            return row.map( ( column, j ) => {
+              return (
+                <GridItem 
+                  key={ i + '' + j } 
+                  cellValue={ column } 
+                  currentLocation={{ i, j }}  
+                  moveToEmpty={ moveToEmpty } 
+                />
+            )})
+          })
+        }
+      </GridWrapperStyled>
+    </GridSectionStyled>
   )
 }
 
@@ -48,4 +40,30 @@ const GridWrapperStyled = styled.div`
                 0 8px 16px rgba(0,0,0,0.07),
                 0 16px 32px rgba(0,0,0,0.07), 
                 0 32px 64px rgba(0,0,0,0.07);
+`;
+
+const GridSectionStyled = styled.section`
+  position: relative;
+  height: 50vh;
+`;
+
+const overlayIn = keyframes`
+  from { height: 0;  }
+  to { height: 50vh;  }  
+`;
+
+const overlayOut = keyframes`
+  from { height: 50vh; }
+  to { height: 0; }  
+`;
+
+const OverlayStyled = styled.div`
+  position: absolute;
+  z-index: 10;
+  height:  ${ props => props.timeActive ? "0": "50vh"}; ;
+  width: 100%;
+  background-color: #121111e3;
+  box-shadow: 0 1px 17px rgb(0 0 0);
+  animation-name: ${ props => props.timeActive ? overlayOut: overlayIn};
+  animation-duration: 0.5s;
 `;

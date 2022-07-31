@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 
 const GameStatus = ( { gameStatus } ) => {
-  
+ 
   return (
-    gameStatus && <GameStatusStyled>{ gameStatus }</GameStatusStyled>
+   <GameStatusStyled> {gameStatus} </GameStatusStyled>
   )
 }
 
