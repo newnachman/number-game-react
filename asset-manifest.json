@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/number-game-react/static/css/main.9092865f.css",
-    "main.js": "/number-game-react/static/js/main.7de17c09.js",
+    "main.css": "/number-game-react/static/css/main.00f78dac.css",
+    "main.js": "/number-game-react/static/js/main.6d7533c5.js",
     "index.html": "/number-game-react/index.html",
-    "main.9092865f.css.map": "/number-game-react/static/css/main.9092865f.css.map",
-    "main.7de17c09.js.map": "/number-game-react/static/js/main.7de17c09.js.map"
+    "main.00f78dac.css.map": "/number-game-react/static/css/main.00f78dac.css.map",
+    "main.6d7533c5.js.map": "/number-game-react/static/js/main.6d7533c5.js.map"
   },
   "entrypoints": [
-    "static/css/main.9092865f.css",
-    "static/js/main.7de17c09.js"
+    "static/css/main.00f78dac.css",
+    "static/js/main.6d7533c5.js"
   ]
 }
