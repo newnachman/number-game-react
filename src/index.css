@@ -10,3 +10,8 @@ div {
 * {
   box-sizing: border-box;
 }
+
+::selection {
+  background-color: lightgrey;
+  color: black;
+}

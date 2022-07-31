@@ -5,7 +5,10 @@ import * as config from '../gridManager/gridConfig';
 const GridItem = ( { cellValue, currentLocation, moveToEmpty } ) => {
   
   return (
-    <GridItemStyled onClick={ () => moveToEmpty( currentLocation )}>
+    <GridItemStyled 
+      isEmpty={cellValue === config.EMPTY} 
+      onClick={ () => moveToEmpty( currentLocation )}
+    >
       { cellValue === config.EMPTY ? "" : cellValue }
     </GridItemStyled>
   )
@@ -22,11 +25,13 @@ const GridItemStyled = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 3em;
-  color: lightgray;
+  color: lightgrey;
   background-color: #202124;
   transition: all 0.3s;
+  cursor: pointer;
 
   &:hover {
-    transform: scale(1.02);
+    transform: ${ props => props.isEmpty ? "none" : "scale(1.02)" };
+    background-color: ${ props => props.isEmpty ? "#202124" : "#26272b" };
   }
 `;
