@@ -29,6 +29,7 @@ const GridItemStyled = styled.div`
   background-color: #202124;
   transition: all 0.3s;
   cursor: pointer;
+  user-select: none;
 
   &:hover {
     transform: ${ props => props.isEmpty ? "none" : "scale(1.02)" };

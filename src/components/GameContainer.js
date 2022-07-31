@@ -19,8 +19,6 @@ const GameContainer = () => {
     () => {
       
       const newGrid = shuffleNewGrid(shufflingTimesRef.current);
-      console.log({shufflingTimesRef})
-      console.log({newGrid})
       setGrid(newGrid);
       setResetData(helpers.structuredClone(newGrid));
       setGameStatus(null);
