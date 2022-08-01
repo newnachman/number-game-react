@@ -63,8 +63,6 @@ const GameContainer = () => {
     }
   }, [ grid ])
 
- 
-
   return (
     <GameContainerStyled>
       <Timer
@@ -92,5 +90,5 @@ export default GameContainer;
 const GameContainerStyled = styled.div`
   width: 80%;
   max-width: 480px;
-  margin: 10vh auto;
+  margin: 7vh auto 0 auto;
 `;

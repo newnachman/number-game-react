@@ -30,7 +30,7 @@ export const HINTS = {
 }
 
 export const STATUS = {
-  WIN: 'YOU DID IT',
+  WIN: 'YOU DID IT!',
   SHUFFLE: 'SHUFFLING',
   RESET: 'RESETTING',
 }
