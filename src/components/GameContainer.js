@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import GameControls from './GameControls';
-import GameStatus from './GameStatus';
 import GridWrapper from './GridWrapper';
 import { checkFinished } from '../gridManager/checkFinished';
 import * as helpers from '../gridManager/gridHelpers';
@@ -69,18 +68,18 @@ const GameContainer = () => {
         timeActive={timeActive}
         gameStatus={gameStatus}
         setTimeActive={setTimeActive}
-      />
+        />
       <GridWrapper 
         grid={grid} 
         moveToEmpty={moveToEmpty} 
         timeActive={timeActive}
+        gameStatus={gameStatus}
       />
       <GameControls 
         generateGrid={generateGrid} 
         resetGrid={resetGrid} 
         shufflingTimesRef={shufflingTimesRef}
       />
-      { ( gameStatus === STATUS.WIN ) && <GameStatus gameStatus={gameStatus} /> }
     </GameContainerStyled>
   )
 }

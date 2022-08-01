@@ -49,18 +49,18 @@ const GameControlsStyled = styled.div`
 
   &>button {
     background-color: #bf12bf;
+    border: 1px solid #bf12bf;
     outline: none;
-    border: none;
     padding: 20px;
     transition: all 0.8s;
     width: 49%;
     font-size: 1.4em;
+    cursor: pointer;
   }
 
   &>button:hover {
     background-color: #101010;
     color: #bf12bf;
-    border: 1px solid #bf12bf;
   }
 
    @media (max-width: 500px) {
@@ -76,12 +76,13 @@ const ShufflingControlStyled = styled.div`
   width: 49%;
   padding: 10px 5px;
   background-color: #bf12bf;
+  border: 1px solid #bf12bf;
   transition: all 0.8s;
+  cursor: pointer;
   
   &:hover {
     background-color: #101010;
     color: #bf12bf;
-    border: 1px solid #bf12bf;
   }
 
   & button {
@@ -92,6 +93,7 @@ const ShufflingControlStyled = styled.div`
     border: none;
     font-size: 1.4em;
     transition: font-size 0.8s;
+    cursor: pointer;
   } 
 
    @media (max-width: 500px) {

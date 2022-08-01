@@ -56,21 +56,36 @@ const TimerWrapperStyled = styled.div`
   font-size: 3em;
   color: #656363;
   margin-bottom: 1vh;
+
+  @media (max-width: 500px) {
+    font-size: 2em;
+  }
 `;
 
 const ControlWrapper = styled.div`
   width: 50%;
   display: flex;
   padding: 10px 0;
+
+  @media (max-width: 500px) {
+    padding: 0;
+  }
   
   & button {
     width: 100%;
     padding: 0.2em;
     display: block;
     font-size: 0.5em;
+    font-weight: 600;
     background-color: #121212;
     color: #656363;
     cursor: pointer;
     border: 1px solid #656363;
+    transition: all 0.2s;
+  }
+
+  & button:hover {
+    box-shadow: 5px 4px 6px 0px #000000;
+    transform: scale(1.02);
   }
 `;

@@ -1,12 +1,16 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import GridItem from './GridItem';
+import GameStatus from './GameStatus';
+import { STATUS } from '../gridManager/gridConfig';
 
-const GridWrapper = ( { grid, moveToEmpty, timeActive } ) => {
+const GridWrapper = ( { grid, moveToEmpty, timeActive, gameStatus } ) => {
 
   return (
     <GridSectionStyled>
-      <OverlayStyled timeActive={timeActive}></OverlayStyled>
+      <OverlayStyled timeActive={timeActive}>
+      { ( gameStatus === STATUS.WIN ) && <GameStatus gameStatus={gameStatus} /> }
+      </OverlayStyled>
       <GridWrapperStyled>
         {
           grid && Array.isArray( grid ) && 
@@ -66,4 +70,10 @@ const OverlayStyled = styled.div`
   box-shadow: 0 1px 17px rgb(0 0 0);
   animation-name: ${ props => props.timeActive ? overlayOut: overlayIn};
   animation-duration: 0.5s;
+  color: white;
+  overflow: hidden;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
 `;
